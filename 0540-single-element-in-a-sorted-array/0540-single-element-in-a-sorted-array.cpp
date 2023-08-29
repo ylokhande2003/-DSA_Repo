@@ -3,15 +3,14 @@ public:
     int singleNonDuplicate(vector<int>& nums) {
        int i=0;
        int j=i+1;
-       if(nums.size()<=1) return nums[i];
-       for(int i=0;i<nums.size();i++)
-       {
-           if(nums[i]!=nums[i+1])
-           {
-               return nums[i];
-           }
-           i++;
-       }
-       return -1;
+       int l=0,r=nums.size()-1;
+        while(l<r){
+            int mid=(l+r)/2;
+            if((mid%2 && nums[mid]==nums[mid-1]) || (mid%2==0 && nums[mid]==nums[mid+1])){
+                l=mid+1;
+            }
+            else r=mid;
+        }
+       return nums[l];
     }
 };
