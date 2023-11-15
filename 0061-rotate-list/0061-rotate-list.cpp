@@ -20,15 +20,15 @@ public:
         for (int i=0; i < k; ++i)
         {
             fast = fast->next;
-            if (fast == NULL) // when k >= list size
+            if (fast == NULL) 
             {
-                k %= i + 1; // remove repeating cycle using list size, which is i + 1
-                i = -1;     // start over
+                k %= i + 1; 
+                i = -1;    
                 fast = head;
             }
         }
 
-        // do the rotation when there is distance between slow and fast pointer.
+  
         if (fast != slow)
         {
             while (fast->next != NULL)
@@ -36,8 +36,7 @@ public:
                 fast = fast->next;
                 slow = slow->next;
             }
-            // for now, slow is at the new tail, fast is at the old tail
-            // cut the list at the new tail, and join it to the head
+           
             fast->next = head;
             head = slow->next;
             slow->next = NULL;
